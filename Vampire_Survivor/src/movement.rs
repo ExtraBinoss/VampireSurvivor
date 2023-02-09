@@ -25,25 +25,23 @@ pub fn movement(
         y_axis = player_pos.move_angle.cos();
     
         if action_state.pressed(Action::MoveLeft) {
-            transform.rotate(Quat::from_rotation_z(((player_pos).move_angle.to_radians()) / 10.0));
-            player_pos.move_angle -= 0.05;
+            transform.rotate(Quat::from_rotation_z(0.085));
+            player_pos.move_angle -= 0.085;
         }
         if action_state.pressed(Action::MoveRight) {
-            transform.rotate(Quat::from_rotation_z((player_pos.move_angle.to_radians()) / 10.0));
-            player_pos.move_angle += 0.05;
+            transform.rotate(Quat::from_rotation_z(-0.085));
+            player_pos.move_angle += 0.085;
         }
         if action_state.pressed(Action::MoveUp) {
             y_force = y_axis * MOVE_FORCE;
             x_force = x_axis * MOVE_FORCE;
-            player_pos.move_angle %= 360.0;
         }
         if action_state.pressed(Action::MoveDown) {
             y_force = y_axis * -MOVE_FORCE;
             x_force = x_axis * -MOVE_FORCE;
-            player_pos.move_angle %= 360.0;
         }
+        player_pos.move_angle %= 360.0;
         external_force.force = Vec2::new(x_force, y_force) * time.delta_seconds();
-        //transform.rotation = rotation_angle;
     }
 
 }

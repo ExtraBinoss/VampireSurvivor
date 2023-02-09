@@ -10,7 +10,7 @@ const PLAYER_SIZE: (f32, f32) = (144., 75.);
 const SPRITE_SCALE: f32 = 0.5;
 const ENEMY1_FORCE: f32 = 8500.0;
 const ENEMY_MAX : i32 = 100;
-const MOVE_FORCE: f32 = 30000.0;
+const MOVE_FORCE: f32 = 12500.0;
 
 mod movement;
 mod enemy_spawn_system;
@@ -67,6 +67,7 @@ pub struct Enemy;
 pub struct VelocityLaser {
 	pub x: f32,
 	pub y: f32,
+    pub rotation: f32,
 }
 
 #[derive(Component, Default)]
@@ -76,7 +77,7 @@ fn main() {
     App::new()
         .add_plugins(DefaultPlugins.set(WindowPlugin {
             window: WindowDescriptor {
-                title: "VAMPAÏEURE SURVAÏVOR".into(),
+                title: "LES CANARDS DE L'ESPACE !".into(),
                 width: 1920.0,
                 height: 1080.0,
                 resizable: false,
@@ -141,7 +142,7 @@ pub fn find_player_position(
     for (transform, _laser) in &mut query2 {
         laser_pos.x = transform.translation.x;
         laser_pos.y = transform.translation.y;
-        println!("LASER POS: {}, {}", laser_pos.x, laser_pos.y);
+        //println!("LASER POS: {}, {}", laser_pos.x, laser_pos.y);
     }
     for mut transform in &mut cam_transform {
         transform.translation.x = player_pos.x;
@@ -183,7 +184,7 @@ fn setup(
             torque: 0.0,
     })
     .insert(Damping {
-        linear_damping: 20.0,
+        linear_damping: 2.0,
         angular_damping: 20000.0,
     })
     .insert(Restitution::coefficient(1.0))

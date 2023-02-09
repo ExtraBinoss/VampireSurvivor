@@ -26,7 +26,7 @@ pub fn enemy_spawn_system(
         count: 0.0,
         wave: 0.0,
     };
-    println!("{}", time.elapsed_seconds());
+    //println!("{}", time.elapsed_seconds());
     let mut wave_is_done = true;
     enemy_spawn_timer.0 += time.delta_seconds();
     if wave_is_done == true {
@@ -48,7 +48,7 @@ pub fn enemy_spawn_system(
             enemy_spawn_timer.0 = 0.0;
             enemy_pos.count += 3.0;
             enemy_pos.wave += 1.0;
-            println!("Wave {} is done!", enemy_pos.wave);
+            //println!("Wave {} is done!", enemy_pos.wave);
             wave_is_done = false;
         }
         // wait for timeBetweenSpawns
