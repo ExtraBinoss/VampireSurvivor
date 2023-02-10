@@ -8,8 +8,7 @@ use crate::enemy_spawn_system::enemy_spawn_system;
 use crate::player::shooting_lasers;
 const PLAYER_SIZE: (f32, f32) = (144., 75.);
 const SPRITE_SCALE: f32 = 0.5;
-const ENEMY1_FORCE: f32 = 8500.0;
-const ENEMY_MAX : i32 = 100;
+const ENEMY_MAX : i32 = 1000;
 const MOVE_FORCE: f32 = 12500.0;
 
 mod movement;
@@ -114,7 +113,6 @@ fn main() {
             y: 0.0,
         })
         .insert_resource(EnemySpawnTimer(0.0))
-        .add_plugin(RapierDebugRenderPlugin::default())
         .add_startup_system(setup)
         .add_system(movement)
         .add_system(find_player_position)
