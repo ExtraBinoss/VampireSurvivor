@@ -38,7 +38,7 @@ pub fn enemy_spawn_system(
                     texture: asset_server.load("enemy_a_01.png"),
                     ..default()
                 }).insert(RigidBody::Dynamic)
-                .insert(Collider::ball(32.0))
+                .insert(Collider::ball(42.0))
                 .insert(Enemy);
             }
             // wait for spawnRate
